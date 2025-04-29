@@ -9,11 +9,11 @@ function PostList() {
         {"id": 4, "edad": 9, "nombre": "Carlos"}
     ]);
 
-    const handleDelete = (id) => {
+    const manejarBorrado = (id) => {
         setPosts(posts.filter(post => post.id !== id));
     }
 
-    const handleAdd = () => {
+    const manejarAñadir = () => {
         const newId = posts.length > 0 ? Math.max(...posts.map(post => post.id)) + 1 : 1;
         const newPost = {
             id: newId,
@@ -25,12 +25,12 @@ function PostList() {
 
     return (
         <div className="post-list">
-            <button onClick={handleAdd} className="add-button">
+            <button onClick={manejarAñadir} className="add-button">
                 Agregar Nuevo Post
             </button>
             
             {posts.map(post => (
-                <Post key={post.id} post={post} onDelete={handleDelete} />
+                <Post key={post.id} post={post} onDelete={manejarBorrado} />
             ))}
         </div>
     );
